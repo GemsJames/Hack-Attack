@@ -28,6 +28,12 @@ namespace Hack_Attack
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            ScreenManager.Instance.Initialize();
+
+            ScreenManager.Instance.Dimensions = new Vector2(800, 600);
+            graphics.PreferredBackBufferWidth = (int)ScreenManager.Instance.Dimensions.X;
+            graphics.PreferredBackBufferHeight = (int)ScreenManager.Instance.Dimensions.Y;
+            graphics.ApplyChanges();
 
             base.Initialize();
         }

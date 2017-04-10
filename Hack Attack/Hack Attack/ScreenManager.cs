@@ -14,9 +14,13 @@ namespace Hack_Attack
     {
         #region Variables
 
-        // Guarda os GameScreens
+        GameScreen currentScreen;
 
-        Dictionary<string, GameScreen> screens = new Dictionary<string, GameScreen>();
+        GameScreen newScreen;
+
+        //ScreenManager Instance
+
+        private static ScreenManager instance;
 
         //Screen Stack
 
@@ -25,6 +29,47 @@ namespace Hack_Attack
         //Tamanho do Ecrã
 
         Vector2 dimensions;
+
+        #endregion
+
+        #region Properties 
+
+        public static ScreenManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new ScreenManager();
+                return instance;
+            }
+        }
+        public Vector2 Dimensions
+        {
+            get { return dimensions; }
+            set { dimensions = value; }
+        }
+
+        #endregion
+
+        #region Main Methods
+
+        public void AddScreen(GameScreen screen)
+        {
+            newScreen = screen;
+            screenStack.Push(screen);
+        }
+
+        public void Initialize() { }
+        public void LoadContent(ContentManager Content) { }
+        public void Update(GameTime gameTime)
+        {
+            currentScreen.Update(gameTime);
+        }
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            currentScreen.Draw(spriteBatch);
+        }
+
         #endregion
     }
 }
