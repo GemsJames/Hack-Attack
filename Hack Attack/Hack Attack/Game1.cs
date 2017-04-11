@@ -48,6 +48,7 @@ namespace Hack_Attack
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            ScreenManager.Instance.LoadContent(Content);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Hack_Attack
                 Exit();
 
             // TODO: Add your update logic here
-
+            ScreenManager.Instance.Update(gameTime);
             base.Update(gameTime);
         }
 
@@ -83,7 +84,9 @@ namespace Hack_Attack
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
-
+            spriteBatch.Begin();
+            ScreenManager.Instance.Draw(spriteBatch);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
     }

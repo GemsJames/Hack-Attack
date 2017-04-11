@@ -14,7 +14,15 @@ namespace Hack_Attack
     {
         #region Variables
 
+        //Cria contentManager
+
+        ContentManager content;
+
+        //Ecrã atual
+
         GameScreen currentScreen;
+
+        //Novo Ecrã
 
         GameScreen newScreen;
 
@@ -57,10 +65,20 @@ namespace Hack_Attack
         {
             newScreen = screen;
             screenStack.Push(screen);
+            currentScreen.UnloadContent();
+            currentScreen = newScreen;
+            currentScreen.LoadContent(content);
         }
 
-        public void Initialize() { }
-        public void LoadContent(ContentManager Content) { }
+        public void Initialize()
+        {
+            currentScreen = new SplashScreen();
+        }
+        public void LoadContent(ContentManager Content)
+        {
+            content = new ContentManager(Content.ServiceProvider, "Content");
+            currentScreen.LoadContent(Content);
+        }
         public void Update(GameTime gameTime)
         {
             currentScreen.Update(gameTime);

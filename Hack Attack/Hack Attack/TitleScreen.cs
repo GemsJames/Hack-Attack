@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Hack_Attack
 {
-    public class SplashScreen : GameScreen
+    public class TitleScreen : GameScreen
     {
         KeyboardState keyState;
         SpriteFont font;
@@ -29,15 +29,17 @@ namespace Hack_Attack
         public override void Update(GameTime gameTime)
         {
             keyState = Keyboard.GetState();
-            if (keyState.IsKeyDown(Keys.Z))                      //stop time clues
-                ScreenManager.Instance.AddScreen(new TitleScreen());
+            if (keyState.IsKeyDown(Keys.Enter))                      //stop time clues
+                ScreenManager.Instance.AddScreen(new SplashScreen());
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            background = content.Load<Texture2D>("tempsplash");
+            // Texturas
+            background = content.Load<Texture2D>("tempbcgrd");
 
             spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+            //
         }
     }
 }
