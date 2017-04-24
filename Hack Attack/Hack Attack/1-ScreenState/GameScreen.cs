@@ -13,6 +13,8 @@ namespace Hack_Attack
     public class GameScreen
     {
         protected ContentManager content;
+        protected List<List<string>> attributes;
+        protected List<List<string>> contents;
 
         public virtual void LoadContent(ContentManager Content)
         {
