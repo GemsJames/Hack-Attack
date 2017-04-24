@@ -22,6 +22,12 @@ namespace Hack_Attack
         protected ContentManager content;
         protected bool isActive;
 
+
+        public virtual float Alpha
+        {
+            get { return alpha; }
+            set { alpha = value; }
+        }
         public bool IsActive
         {
             set { isActive = value; }
@@ -55,7 +61,7 @@ namespace Hack_Attack
             image = null;
         }
 
-        public virtual void Update(SpriteBatch spriteBatch)
+        public virtual void Update(GameTime gameTime)
         {
 
         }
