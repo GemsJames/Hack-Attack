@@ -38,13 +38,15 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Part2\Animation.cs" />
+    <Compile Include="Part2\FadeAnimation.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="GameScreen.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Part1\GameScreen.cs" />
+    <Compile Include="Part1\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScreenManager.cs" />
-    <Compile Include="SplashScreen.cs" />
-    <Compile Include="TitleScreen.cs" />
+    <Compile Include="Part1\ScreenManager.cs" />
+    <Compile Include="Part1\SplashScreen.cs" />
+    <Compile Include="Part1\TitleScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
