@@ -34,6 +34,11 @@ namespace Hack_Attack
             get { return isActive; }
         }
 
+        public float Scale
+        {
+            set { scale = value; }
+        }
+
         public virtual void LoadContent(ContentManager Content, Texture2D image, string text, Vector2 position)
         {
             content = new ContentManager(Content.ServiceProvider, "Content");
@@ -71,13 +76,13 @@ namespace Hack_Attack
             if (image != null)
             {
                 origin = new Vector2(sourceRect.Width / 2, sourceRect.Height / 2);
-                spriteBatch.Draw(image, position + origin, sourceRect, Color.White, rotation, origin, scale, SpriteEffects.None, 0.0f);
+                spriteBatch.Draw(image, position + origin, sourceRect, Color.White * alpha, rotation, origin, scale, SpriteEffects.None, 0.0f);
             }
 
             if(text != string.Empty)
             {
                 origin = new Vector2(font.MeasureString(text).X / 2, font.MeasureString(text).Y / 2);
-                spriteBatch.DrawString(font, text, position + origin, color, rotation, origin, scale, SpriteEffects.None, 0.0f);
+                spriteBatch.DrawString(font, text, position + origin, color * alpha, rotation, origin, scale, SpriteEffects.None, 0.0f);
             }
         }
     }

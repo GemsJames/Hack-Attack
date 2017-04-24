@@ -38,6 +38,14 @@ namespace Hack_Attack
 
         Vector2 dimensions;
 
+        //Deixa saber se é pra tranzecionar
+
+        bool transition;
+
+        FadeAnimation fade;
+
+        Texture2D fadeTexture;
+
         #endregion
 
         #region Properties 
@@ -63,29 +71,60 @@ namespace Hack_Attack
 
         public void AddScreen(GameScreen screen)
         {
+            transition = true;
             newScreen = screen;
-            screenStack.Push(screen);
-            currentScreen.UnloadContent();
-            currentScreen = newScreen;
-            currentScreen.LoadContent(content);
+            fade.IsActive = true;
+            fade.Alpha = 0.0f;
+            fade.ActivateValue = 1.0f;
         }
 
         public void Initialize()
         {
             currentScreen = new SplashScreen();
+            fade = new FadeAnimation();
         }
         public void LoadContent(ContentManager Content)
         {
             content = new ContentManager(Content.ServiceProvider, "Content");
             currentScreen.LoadContent(Content);
+
+            fadeTexture = content.Load<Texture2D>("PixelPreto");
+            fade.LoadContent(content, fadeTexture, "", Vector2.Zero);
+            fade.Scale = dimensions.X;
         }
         public void Update(GameTime gameTime)
         {
-            currentScreen.Update(gameTime);
+            if (!transition)
+                currentScreen.Update(gameTime);
+            else
+                Transition(gameTime);
         }
         public void Draw(SpriteBatch spriteBatch)
         {
             currentScreen.Draw(spriteBatch);
+            if (transition)
+                fade.Draw(spriteBatch);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private void Transition(GameTime gameTime)
+        {
+            fade.Update(gameTime);
+            if(fade.Alpha == 1.0f && fade.Timer.TotalSeconds == 1.0f)
+            {
+                screenStack.Push(newScreen);
+                currentScreen.UnloadContent();
+                currentScreen = newScreen;
+                currentScreen.LoadContent(content);
+            }
+            else if (fade.Alpha == 0.0f)
+            {
+                transition = false;
+                fade.IsActive = false;
+            }
         }
 
         #endregion
