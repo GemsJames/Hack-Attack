@@ -88,7 +88,7 @@ namespace Hack_Attack
             content = new ContentManager(Content.ServiceProvider, "Content");
             currentScreen.LoadContent(Content);
 
-            fadeTexture = content.Load<Texture2D>("PixelPreto");
+            fadeTexture = content.Load<Texture2D>("fade");
             fade.LoadContent(content, fadeTexture, "", Vector2.Zero);
             fade.Scale = dimensions.X;
         }

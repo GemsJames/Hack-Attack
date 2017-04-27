@@ -17,9 +17,6 @@ namespace Hack_Attack
 
         LoadType type;
 
-        List<List<string>> attributes = new List<List<string>>();
-        List<List<string>> contents = new List<List<string>>();
-
         List<string> tempAttributes;
         List<string> tempContents;
 
@@ -36,13 +33,13 @@ namespace Hack_Attack
                     if (line.Contains("Load="))
                     {
                         tempAttributes = new List<string>();
-                        line.Remove(0, line.IndexOf("=") + 1);
+                        line = line.Remove(0, line.IndexOf("=") + 1);
                         type = LoadType.Attributes;
                     }
                     else
                     {
-                        tempContents = new List<string>();
                         type = LoadType.Contents;
+                        tempContents = new List<string>();
                     }
 
                     string[] lineArray = line.Split(']');
@@ -91,7 +88,7 @@ namespace Hack_Attack
                         if (line.Contains("Load="))
                         {
                             tempAttributes = new List<string>();
-                            line.Remove(0, line.IndexOf("=") + 1);
+                            line = line.Remove(0, line.IndexOf("=") + 1);
                             type = LoadType.Attributes;
                         }
                         else

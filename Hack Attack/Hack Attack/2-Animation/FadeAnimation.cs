@@ -74,10 +74,21 @@ namespace Hack_Attack
             {
                 if (!stopUpdating)
                 {
-                    if (!increase) alpha -= fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    else alpha += fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                    if (alpha <= 0.0f) alpha = 0.0f;
-                    else if (alpha >= 1.0f) alpha = 1.0f;
+                    if (!increase)
+                        alpha -= fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                    else
+                        alpha += fadeSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+                    if (alpha <= 0.0f)
+                    {
+                        alpha = 0.0f;
+                        increase = true;
+                    }
+                    else if (alpha >= 1.0f)
+                    {
+                        alpha = 1.0f;
+                        increase = false;
+                    }
                 }
 
                 if (alpha == activateValue)
@@ -86,7 +97,6 @@ namespace Hack_Attack
                     timer -= gameTime.ElapsedGameTime;
                     if(timer.TotalSeconds <= 0)
                     {
-                        increase = !increase;
                         timer = defaultTime;
                         stopUpdating = false;
                     }

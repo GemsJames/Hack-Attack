@@ -20,10 +20,13 @@ namespace Hack_Attack
 
         FileManager fileManager;
 
+        int imageNumber;
+
         public override void LoadContent(ContentManager Content)
         {
             base.LoadContent(Content);
 
+            imageNumber = 0;
             fileManager = new FileManager();
             fade = new List<FadeAnimation>();
             images = new List<Texture2D>();
@@ -47,26 +50,28 @@ namespace Hack_Attack
             {
                 fade[i].LoadContent(content, images[i], "", Vector2.Zero);
                 fade[i].Scale = 1.25f;
+                fade[i].IsActive = true;
             }
         }
 
         public override void UnloadContent()
         {
             base.UnloadContent();
+            fileManager = null;
         }
 
         public override void Update(GameTime gameTime)
         {
             keyState = Keyboard.GetState();
-            if (keyState.IsKeyDown(Keys.Z))                      //stop time clues
-                ScreenManager.Instance.AddScreen(new TitleScreen());
+            //if (keyState.IsKeyDown(Keys.Z))                      //stop time clues
+            //    ScreenManager.Instance.AddScreen(new TitleScreen());
+
+            fade[imageNumber].Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            background = content.Load<Texture2D>("tempsplash");
-
-            spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
+            fade[imageNumber].Draw(spriteBatch);
         }
     }
 }
