@@ -48,7 +48,8 @@ namespace Hack_Attack
             }
             for (int i = 0; i < fade.Count; i++)
             {
-                fade[i].LoadContent(content, images[i], "", Vector2.Zero);
+                fade[i].LoadContent(content, images[i], "",new Vector2(80,60));
+                //ImageWidth /2 * scale - (image width / 2)
                 fade[i].Scale = 1.25f;
                 fade[i].IsActive = true;
             }
@@ -67,6 +68,17 @@ namespace Hack_Attack
             //    ScreenManager.Instance.AddScreen(new TitleScreen());
 
             fade[imageNumber].Update(gameTime);
+
+            if (fade[imageNumber].Alpha == 0.0f)
+                imageNumber++;
+
+            if(imageNumber >= fade.Count -1 || keyState.IsKeyDown(Keys.Z))
+            {
+                if (fade[imageNumber].Alpha != 1.0f)
+                    ScreenManager.Instance.AddScreen(new TitleScreen(), fade[imageNumber].Alpha);
+                else
+                    ScreenManager.Instance.AddScreen(new TitleScreen());
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

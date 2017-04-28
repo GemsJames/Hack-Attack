@@ -56,6 +56,11 @@ namespace Hack_Attack
             set { activateValue = value; }
         }
 
+        public bool Increase
+        {
+            set { increase = value; }
+        }
+
         public override void LoadContent(ContentManager Content, Texture2D image, string text, Vector2 position)
         {
             base.LoadContent(Content, image, text, position);
