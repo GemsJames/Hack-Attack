@@ -26,7 +26,59 @@ namespace Hack_Attack
 
         List<List<string>> attributes, contents;
 
+        List<Animation> tempAnimation;
+
         Rectangle source;
+
+        SpriteFont font;
+
+        int itemNumber;
+
+        private void SetMenuItems()
+        {
+            for(int i = 0; i < menuItems.Count; i++)
+            {
+                if (menuImages.Count == i)
+                    menuImages.Add(null);
+            }
+
+            for ( int i = 0; i < menuImages.Count; i++)
+            {
+                if (menuItems.Count == i)
+                    menuItems.Add("");
+            }
+        }
+        private void setAnimations()
+        {
+            Vector2 pos = position;
+            Vector2 dimensions;
+            for(int i = 0; i < menuImages.Count; i++)
+            {
+                for(int j = 0; j < animationTypes.Count; i++)
+                {
+                    switch (animationTypes[j])
+                    {
+                        case "Fade":
+                            tempAnimation.Add(new FadeAnimation());
+                            tempAnimation[tempAnimation.Count - 1].LoadContent(content,menuImages[i], menuItems[i], position)
+                            break;
+                    }
+                }
+                animation.Add(tempAnimation);
+                tempAnimation = new List<Animation>();
+
+                dimensions = new Vector2(font.MeasureString(menuItems[i]).X + menuImages[i].Width, font.MeasureString(menuItems[i]).Y + menuImages[i].Height);
+
+                if(axis == 1)
+                {
+                    pos.X += dimensions.X;
+                }
+                else
+                {
+                    pos.Y += dimensions.Y;
+                }
+            }
+        }
 
         public void LoadContent(ContentManager content, string id)
         {
@@ -37,6 +89,7 @@ namespace Hack_Attack
             animation = new List<List<Animation>>();
             attributes = new List<List<string>>();
             contents = new List<List<string>>();
+            itemNumber = 0;
 
             position = Vector2.Zero;
 
@@ -48,6 +101,9 @@ namespace Hack_Attack
                 {
                     switch (attributes[i][j])
                     {
+                        case "Font":
+                            font = content.Load<SpriteFont>(content[i][j]);
+                            break;
                         case "Item":
                             menuItems.Add(contents[i][j]);
                             break;
@@ -80,6 +136,16 @@ namespace Hack_Attack
             menuItems.Clear();
             menuImages.Clear();
             animationTypes.Clear();
+        }
+
+        public void Update(GameTime gameTime)
+        {
+
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+
         }
     }
 }
