@@ -41,6 +41,7 @@
     <Compile Include="2-Animation\Animation.cs" />
     <Compile Include="2-Animation\FadeAnimation.cs" />
     <Compile Include="3-FileManager\FileManager.cs" />
+    <Compile Include="4-InputManager\InputManager.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="1-ScreenState\GameScreen.cs" />
     <Compile Include="1-ScreenState\Program.cs" />
