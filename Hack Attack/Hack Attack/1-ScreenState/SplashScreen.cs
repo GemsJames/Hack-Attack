@@ -12,9 +12,7 @@ namespace Hack_Attack
 {
     public class SplashScreen : GameScreen
     {
-        KeyboardState keyState;
         SpriteFont font;
-        private Texture2D background;
         List<FadeAnimation> fade;
         List<Texture2D> images;
 
@@ -22,9 +20,9 @@ namespace Hack_Attack
 
         int imageNumber;
 
-        public override void LoadContent(ContentManager Content)
+        public override void LoadContent(ContentManager Content, InputManager inputManager)
         {
-            base.LoadContent(Content);
+            base.LoadContent(Content, inputManager);
 
             imageNumber = 0;
             fileManager = new FileManager();
@@ -72,10 +70,7 @@ namespace Hack_Attack
 
             if(imageNumber >= fade.Count -1 || inputManager.KeyPressed(Keys.Z))
             {
-                if (fade[imageNumber].Alpha != 1.0f)
-                    ScreenManager.Instance.AddScreen(new TitleScreen(), fade[imageNumber].Alpha);
-                else
-                    ScreenManager.Instance.AddScreen(new TitleScreen());
+                ScreenManager.Instance.AddScreen(new TitleScreen(), inputManager);
             }
         }
 

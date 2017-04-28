@@ -12,13 +12,12 @@ namespace Hack_Attack
 {
     public class TitleScreen : GameScreen
     {
-        KeyboardState keyState;
         SpriteFont font;
         private Texture2D background;
 
-        public override void LoadContent(ContentManager Content)
+        public override void LoadContent(ContentManager Content, InputManager inputManager)
         {
-            base.LoadContent(Content);
+            base.LoadContent(Content, inputManager);
         }
 
         public override void UnloadContent()
@@ -28,9 +27,9 @@ namespace Hack_Attack
 
         public override void Update(GameTime gameTime)
         {
-            keyState = Keyboard.GetState();
-            if (keyState.IsKeyDown(Keys.Enter))                      //stop time clues
-                ScreenManager.Instance.AddScreen(new SplashScreen());
+            inputManager.Update();
+            if (inputManager.KeyPressed(Keys.Z))                      //stop time clues
+                ScreenManager.Instance.AddScreen(new SplashScreen(), inputManager);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
