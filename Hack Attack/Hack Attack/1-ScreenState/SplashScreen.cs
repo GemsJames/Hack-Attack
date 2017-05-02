@@ -29,7 +29,7 @@ namespace Hack_Attack
             fade = new List<FadeAnimation>();
             images = new List<Texture2D>();
 
-            fileManager.LoadContent("Load/Splash.cme", attributes, contents);
+            fileManager.LoadContent("Load/Splash.jxz", attributes, contents);
 
             for(int i=0; i<attributes.Count; i++)
             {

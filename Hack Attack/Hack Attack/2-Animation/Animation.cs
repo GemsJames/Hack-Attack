@@ -47,7 +47,7 @@ namespace Hack_Attack
             this.position = position;
             if (text != String.Empty)
             {
-                font = content.Load<SpriteFont>("AnimationFont");
+                font = content.Load<SpriteFont>("MenuFont");
                 color = new Color(114, 77, 255);
             }
             if (image != null)
