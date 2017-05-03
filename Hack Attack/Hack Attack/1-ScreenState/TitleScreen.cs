@@ -19,8 +19,7 @@ namespace Hack_Attack
         {
             base.LoadContent(Content, inputManager);
             if (font == null)
-                font = content.Load<SpriteFont>("MenuFont");
-
+                font = this.content.Load<SpriteFont>("MenuFont");
             menu = new MenuManager();
             menu.LoadContent(content, "Title");
         }
@@ -34,18 +33,11 @@ namespace Hack_Attack
         public override void Update(GameTime gameTime)
         {
             inputManager.Update();
-            menu.Update(gameTime);
-            if (inputManager.KeyPressed(Keys.Z))                      //stop time clues
-                ScreenManager.Instance.AddScreen(new SplashScreen(), inputManager);
+            menu.Update(gameTime, inputManager);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            ////// Texturas
-            ////background = content.Load<Texture2D>("tempbcgrd");
-
-            ////spriteBatch.Draw(background, new Rectangle(0, 0, 800, 480), Color.White);
-            //////
             menu.Draw(spriteBatch);
         }
     }
