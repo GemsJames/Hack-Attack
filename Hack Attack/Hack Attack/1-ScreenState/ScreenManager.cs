@@ -108,7 +108,7 @@ namespace Hack_Attack
 
         public void Initialize()
         {
-            currentScreen = new GamePlayScreen();
+            currentScreen = new GamePlayScreen(); //GamePlayScreen SplashScreen
             fade = new FadeAnimation();
             inputManager = new InputManager();
         }

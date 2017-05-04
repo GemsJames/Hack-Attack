@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 
 namespace Hack_Attack
 {
@@ -127,7 +128,7 @@ namespace Hack_Attack
             position = Vector2.Zero;
 
             fileManager = new FileManager();
-            fileManager.LoadContent("Load/Menu.cme", attributes, contents, id);
+            fileManager.LoadContent("Load/Menu.jxz", attributes, contents, id);
 
             for (int i = 0; i < attributes.Count; i++)
             {
@@ -207,7 +208,7 @@ namespace Hack_Attack
             {
                 if (linkType[itemNumber] == "Screen")
                 {
-                    Type newClass = Type.GetType("xnaplatformer." + linkID[itemNumber]);
+                    Type newClass = Type.GetType("Hack_Attack." + linkID[itemNumber]);
                     ScreenManager.Instance.AddScreen((GameScreen)Activator.CreateInstance(newClass), inputManager);
                 }
             }

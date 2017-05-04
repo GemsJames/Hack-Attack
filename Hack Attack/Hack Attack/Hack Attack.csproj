@@ -83,7 +83,7 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Load\Menus.jxz">
+    <None Include="Load\Menu.jxz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Load\Splash.jxz">
