@@ -57,10 +57,11 @@ namespace Hack_Attack
 
         public override void Update(GameTime gameTime, InputManager input, Collision col, Layers layer)
         {
+            // 3 1 2 0 layer da animaçao
             moveAnimation.IsActive = true;
             if (input.KeyDown(Keys.Right, Keys.D))
             {
-                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 2);
+                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 3);
                 position.X += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             else if (input.KeyDown(Keys.Left, Keys.A))
@@ -70,12 +71,12 @@ namespace Hack_Attack
             }
             else if (input.KeyDown(Keys.Down, Keys.S))
             {
-                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 0);
+                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 2);
                 position.Y += moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             else if (input.KeyDown(Keys.Up, Keys.W))
             {
-                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 3);
+                moveAnimation.CurrentFrame = new Vector2(moveAnimation.CurrentFrame.X, 0);
                 position.Y -= moveSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
             }
             else
