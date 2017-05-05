@@ -54,6 +54,7 @@
     <Compile Include="1-ScreenState\ScreenManager.cs" />
     <Compile Include="1-ScreenState\SplashScreen.cs" />
     <Compile Include="1-ScreenState\TitleScreen.cs" />
+    <Compile Include="SpriteSheetAnimation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
