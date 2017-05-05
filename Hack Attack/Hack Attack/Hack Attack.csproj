@@ -46,6 +46,8 @@
     <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameScreen.cs" />
+    <Compile Include="Layers.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="GameplayScreen.cs" />
     <Compile Include="MenuManager.cs" />
@@ -91,6 +93,9 @@
     <MonoGameContentReference Include="Content\Content.mgcb" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Load\Maps\Map1.jxz">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Load\Menu.jxz">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
