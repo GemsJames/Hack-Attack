@@ -21,7 +21,7 @@ namespace Hack_Attack
             Vector2 tempFrames = Vector2.Zero;
             moveSpeed = 100f;
 
-            fileManager.LoadContent("Load/Player.cme", attributes, contents);
+            fileManager.LoadContent("Load/Player.jxz", attributes, contents);
             for (int i = 0; i < attributes.Count; i++)
             {
                 for (int j = 0; j < attributes[i].Count; j++)
