@@ -42,10 +42,14 @@
     <Compile Include="2-Animation\FadeAnimation.cs" />
     <Compile Include="3-FileManager\FileManager.cs" />
     <Compile Include="4-InputManager\InputManager.cs" />
+    <Compile Include="Enemy.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="1-ScreenState\GameScreen.cs" />
     <Compile Include="1-ScreenState\Program.cs" />
+    <Compile Include="GameplayScreen.cs" />
     <Compile Include="MenuManager.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="1-ScreenState\ScreenManager.cs" />
     <Compile Include="1-ScreenState\SplashScreen.cs" />
